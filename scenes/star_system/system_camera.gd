@@ -15,7 +15,7 @@ var _is_rotating: bool = false
 
 func _ready() -> void:
 	# Start position: elevated, looking toward origin
-	position = Vector3(0.0, 300.0, 600.0)
+	position = Vector3(0.0, 500.0, 1000.0)
 	look_at(Vector3.ZERO)
 	# Extract initial rotation from look_at
 	_rotation_x = rotation.x

@@ -9,6 +9,13 @@ const MAX_PLANETS: int = 8
 const MIN_ORBIT_RADIUS: float = 80.0
 const MAX_ORBIT_RADIUS: float = 500.0
 
+# Seed-driven system compactness: scales the orbital band per system
+const COMPACTNESS_MIN: float = 0.6   # tight system → band is 80–332
+const COMPACTNESS_MAX: float = 1.5   # spread system → band is 80–710
+
+# Angular jitter: fraction of sector each planet can deviate
+const ANGLE_JITTER_FRACTION: float = 0.3
+
 # Planet size range (mesh radius)
 const MIN_PLANET_RADIUS: float = 5.0
 const MAX_PLANET_RADIUS: float = 25.0

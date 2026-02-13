@@ -24,7 +24,7 @@ script = ExtResource("1_system")
 [node name="PlanetContainer" type="Node3D" parent="."]
 
 [node name="SystemCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 1000)
 script = ExtResource("2_camera")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
