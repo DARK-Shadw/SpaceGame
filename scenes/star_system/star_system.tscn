@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsystem001"]
+
+[ext_resource type="Script" path="res://scenes/star_system/star_system.gd" id="1_system"]
+[ext_resource type="Script" path="res://scenes/star_system/system_camera.gd" id="2_camera"]
+[ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="4_stargen"]
+[ext_resource type="Shader" path="res://addons/starlight/Star.gdshader" id="5_starshader"]
+[ext_resource type="Texture2D" path="res://addons/starlight/psf-textures/jwst.png" id="6_jwst"]
+
+[sub_resource type="Environment" id="Environment_001"]
+background_mode = 1
+background_color = Color(0, 0, 0, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.08, 0.08, 0.12, 1)
+ambient_light_energy = 0.6
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.1
+
+[node name="StarSystem" type="Node3D"]
+script = ExtResource("1_system")
+
+[node name="StarContainer" type="Node3D" parent="."]
+
+[node name="PlanetContainer" type="Node3D" parent="."]
+
+[node name="SystemCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 600)
+script = ExtResource("2_camera")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_001")
+
+[node name="Stars" type="Node3D" parent="."]
+script = ExtResource("4_stargen")
+shader = ExtResource("5_starshader")
+shader_params/texture_emission_tint = Vector3(0.252, 0.157, 0.292)
+shader_params/blur_amount = 0.5
+shader_params/emission_energy = 2e+10
+shader_params/billboard_size_deg = 45.0
+shader_params/luminosity_cap = 4e+06
+shader_params/meters_per_lightyear = 100.0
+shader_params/color_gamma = 3.0
+shader_params/texture_gamma = 1000.0
+shader_params/clamp_output = false
+shader_params/min_size_ratio = 0.003
+shader_params/max_luminosity = 100000.0
+shader_params/scaling_gamma = 0.45
+shader_params/debug_show_rects = false
+shader_params/texture_emission = ExtResource("6_jwst")
+star_count = 8000
+size = 8000
+rng_seed = 42
