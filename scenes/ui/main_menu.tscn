@@ -1,0 +1,343 @@
+[gd_scene load_steps=18 format=3 uid="uid://cmainmenu01"]
+
+[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/ui/ui-pack-sci-fi/Font/Kenney Future.ttf" id="2_font"]
+[ext_resource type="FontFile" path="res://assets/ui/ui-pack-sci-fi/Font/Kenney Future Narrow.ttf" id="3_font_narrow"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Blue/Default/bar_square_large.png" id="4_btn_normal"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Blue/Double/bar_square_large.png" id="5_btn_hover"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Grey/Default/bar_square_large.png" id="6_btn_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Blue/Default/bar_square_large_square.png" id="7_arrow_normal"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Blue/Double/bar_square_large_square.png" id="8_arrow_hover"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Grey/Default/bar_square_large_square.png" id="9_arrow_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ui/ui-pack-sci-fi/PNG/Extra/Default/panel_glass.png" id="10_panel_glass"]
+
+[sub_resource type="StyleBoxTexture" id="btn_normal"]
+texture = ExtResource("4_btn_normal")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="btn_hover"]
+texture = ExtResource("5_btn_hover")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="btn_pressed"]
+texture = ExtResource("6_btn_pressed")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="arrow_normal"]
+texture = ExtResource("7_arrow_normal")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="arrow_hover"]
+texture = ExtResource("8_arrow_hover")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="arrow_pressed"]
+texture = ExtResource("9_arrow_pressed")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="panel_glass"]
+texture = ExtResource("10_panel_glass")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.2, 0.25, 0.35, 0.85)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="BgViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+mouse_filter = 2
+
+[node name="BgViewport" type="SubViewport" parent="BgViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="UILayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="UILayer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 52
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "COSMOSFORGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ContentMargin" type="MarginContainer" parent="UILayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 100
+
+[node name="ContentHBox" type="HBoxContainer" parent="UILayer/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ShipPanel" type="PanelContainer" parent="UILayer/ContentMargin/ContentHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(420, 0)
+theme_override_styles/panel = SubResource("panel_glass")
+
+[node name="ShipVBox" type="VBoxContainer" parent="UILayer/ContentMargin/ContentHBox/ShipPanel"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="ShipViewportContainer" type="SubViewportContainer" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(380, 300)
+stretch = true
+mouse_filter = 2
+
+[node name="ShipViewport" type="SubViewport" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox/ShipViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(380, 300)
+render_target_update_mode = 4
+
+[node name="ShipNameLabel" type="Label" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+text = "Speeder A"
+horizontal_alignment = 1
+
+[node name="ArrowHBox" type="HBoxContainer" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="PrevShipButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox/ArrowHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("arrow_normal")
+theme_override_styles/hover = SubResource("arrow_hover")
+theme_override_styles/pressed = SubResource("arrow_pressed")
+theme_override_styles/focus = SubResource("arrow_hover")
+text = "<"
+
+[node name="NextShipButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox/ArrowHBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("arrow_normal")
+theme_override_styles/hover = SubResource("arrow_hover")
+theme_override_styles/pressed = SubResource("arrow_pressed")
+theme_override_styles/focus = SubResource("arrow_hover")
+text = ">"
+
+[node name="Spacer" type="Control" parent="UILayer/ContentMargin/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightVBox" type="VBoxContainer" parent="UILayer/ContentMargin/ContentHBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="ButtonsPanel" type="PanelContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("panel_glass")
+
+[node name="ButtonsMargin" type="MarginContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="NewGameButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/disabled = SubResource("btn_pressed")
+theme_override_styles/focus = SubResource("btn_hover")
+text = "NEW GAME"
+
+[node name="ConfigSeedButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/disabled = SubResource("btn_pressed")
+theme_override_styles/focus = SubResource("btn_hover")
+text = "CONFIGURE SEED"
+
+[node name="QuitButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/disabled = SubResource("btn_pressed")
+theme_override_styles/focus = SubResource("btn_hover")
+text = "QUIT"
+
+[node name="SeedPanel" type="PanelContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("panel_glass")
+
+[node name="SeedMargin" type="MarginContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SeedVBox" type="VBoxContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CurrentSeedLabel" type="Label" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Current Seed: 12345"
+horizontal_alignment = 1
+
+[node name="SeedInputHBox" type="HBoxContainer" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SeedInput" type="LineEdit" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox/SeedInputHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_font_narrow")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+placeholder_text = "Enter seed..."
+
+[node name="ApplySeedButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox/SeedInputHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/focus = SubResource("btn_hover")
+text = "APPLY"
+
+[node name="RandomSeedButton" type="Button" parent="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox/SeedInputHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("btn_normal")
+theme_override_styles/hover = SubResource("btn_hover")
+theme_override_styles/pressed = SubResource("btn_pressed")
+theme_override_styles/focus = SubResource("btn_hover")
+text = "RANDOM"
+
+[node name="SeedFooterLabel" type="Label" parent="UILayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_font_narrow")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 1, 1, 0.3)
+text = "SEED: 12345"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox/ArrowHBox/PrevShipButton" to="." method="_on_prev_ship_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/ShipPanel/ShipVBox/ArrowHBox/NextShipButton" to="." method="_on_next_ship_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox/ConfigSeedButton" to="." method="_on_config_seed_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/RightVBox/ButtonsPanel/ButtonsMargin/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox/SeedInputHBox/ApplySeedButton" to="." method="_on_apply_seed_button_pressed"]
+[connection signal="pressed" from="UILayer/ContentMargin/ContentHBox/RightVBox/SeedPanel/SeedMargin/SeedVBox/SeedInputHBox/RandomSeedButton" to="." method="_on_random_seed_button_pressed"]

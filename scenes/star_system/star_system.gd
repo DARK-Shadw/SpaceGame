@@ -2,6 +2,7 @@ extends Node3D
 
 const StarBodyScene: PackedScene = preload("res://scenes/star/star_body.tscn")
 const PlanetBodyScene: PackedScene = preload("res://scenes/planet/planet_body.tscn")
+const SpaceshipScene: PackedScene = preload("res://scenes/player/spaceship.tscn")
 
 @onready var star_container: Node3D = $StarContainer
 @onready var planet_container: Node3D = $PlanetContainer
@@ -26,4 +27,8 @@ func _generate_system() -> void:
 		planet_container.add_child(planet_body)
 		planet_body.configure(planet_data)
 
-	print("Star system generated | seed: %d | planets: %d" % [system_seed, system_data.planets.size()])
+	# Spawn player ship
+	var spaceship := SpaceshipScene.instantiate()
+	spaceship.position = Vector3(0, 50, 800)
+	spaceship.basis = Basis.looking_at((Vector3.ZERO - Vector3(0, 50, 800)).normalized())
+	add_child(spaceship)

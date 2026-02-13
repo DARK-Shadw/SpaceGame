@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cspaceship01"]
+
+[ext_resource type="Script" path="res://scenes/player/spaceship.gd" id="1_script"]
+
+[node name="Spaceship" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="ModelContainer" type="Node3D" parent="."]
+
+[node name="FillLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_energy = 0.5
+omni_range = 20.0
+
+[node name="ThirdPersonCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)

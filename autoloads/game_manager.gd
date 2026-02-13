@@ -2,6 +2,8 @@ extends Node
 
 var universe_seed: int = 12345
 var current_system_index: int = 0
+var selected_ship_model: String = "res://assets/models/Spaceships/craft_speederA.glb"
+var current_planet_data: PlanetData = null
 
 
 func set_universe_seed(new_seed: int) -> void:
